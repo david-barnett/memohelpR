@@ -5,7 +5,7 @@ Authors@R:
     person("David", "Barnett", 
             email = "david.barnett@maastrichtuniversity.nl", 
             comment = c(ORCID = "0000-0003-1961-7206"))
-Description: memohelpR is an experimental R package that provides an easy and efficient way to memoize functions. The main function, memoise_fun_in_proj, creates a memoized version of a specified function, writing the cache to disk in a folder in the project.
+Description: memohelpR is an experimental R package that provides an easy way to memoize functions with a disk cache. The main function, memoise_fun_in_proj, creates a memoized version of a specified function, writing the cache to disk in a folder in the project.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -13,5 +13,6 @@ RoxygenNote: 7.2.3
 Imports: 
     cachem,
     here,
+    lifecycle,
     memoise (>= 2.0.0),
     stringr

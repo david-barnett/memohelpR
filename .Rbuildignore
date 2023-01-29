@@ -3,3 +3,4 @@
 ^LICENSE\.md$
 ^\.Rprofile$
 ^\.Rhistory$
+^README\.Rmd$

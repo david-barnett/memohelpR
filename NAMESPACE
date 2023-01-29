@@ -2,3 +2,4 @@
 
 export(memoise_fun_in_proj)
 export(omit_args_interactive)
+importFrom(lifecycle,deprecated)
