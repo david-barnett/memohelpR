@@ -31,9 +31,11 @@ memoise_fun_in_proj <- function(func,
                                 evict = "lru",
                                 ...) {
 
-  stopifnot(is.function(func))
   func_name <- deparse(substitute(func))
-  func_name_memo <- paste0(func_name, "_memo")
+  stopifnot(is.function(func))
+
+  # remove package name
+  func_name <- gsub(pattern = "^.+[:]{2}", replacement = "", x = func_name)
 
   # check if this is probably running for the first time or not
   if (!dir.exists(file.path(proj_dir, memo_dir, func_name))) {
@@ -62,9 +64,9 @@ memoise_fun_in_proj <- function(func,
   cache_dir <- file.path(memo_dir, "cache")
 
   # Create the cache_dir
-  if (!dir.exists(file.path(wd, cache_dir))) {
+  if (!dir.exists(cache_dir)) {
     message("Creating cache dir at: ./", cache_dir)
-    dir.create(file.path(wd, cache_dir), recursive = TRUE)
+    dir.create(cache_dir, recursive = TRUE)
   }
 
   # create disk cache object
