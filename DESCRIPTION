@@ -1,0 +1,12 @@
+Package: memohelpR
+Title: Helps you memoise R functions with the memoise package
+Version: 0.0.0.9000
+Authors@R: 
+    person("David", "Barnett", 
+            email = "david.barnett@maastrichtuniversity.nl", 
+            comment = c(ORCID = "0000-0003-1961-7206"))
+Description: memohelpR is an experimental R package that provides an easy and efficient way to memoize functions. The main function, memoise_fun_in_proj, creates a memoized version of a specified function, writing the cache to disk in a folder in the project.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
