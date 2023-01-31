@@ -37,8 +37,11 @@ memoise_fun_in_proj <- function(func,
   # remove package name
   func_name <- gsub(pattern = "^.+[:]{2}", replacement = "", x = func_name)
 
+  # specify memoise function directory
+  mem_fun_dir <- file.path(proj_dir, memo_dir, func_name)
+
   # check if this is probably running for the first time or not
-  if (!dir.exists(file.path(proj_dir, memo_dir, func_name))) {
+  if (!dir.exists(mem_fun_dir)) {
 
     # Print the current working directory
     message("Project working directory, from here(): \n", proj_dir, "\n")
@@ -57,11 +60,8 @@ memoise_fun_in_proj <- function(func,
 
   }
 
-  # specify memoise function directory
-  memo_dir <- file.path(memo_dir, func_name)
-
   # Set the cache_dir name
-  cache_dir <- file.path(memo_dir, "cache")
+  cache_dir <- file.path(mem_fun_dir, "cache")
 
   # Create the cache_dir
   if (!dir.exists(cache_dir)) {
@@ -71,7 +71,7 @@ memoise_fun_in_proj <- function(func,
 
   # create disk cache object
   cache <- cachem::cache_disk(
-    dir = cache_dir, logfile = file.path(memo_dir, logfile), evict = evict, ...
+    dir = cache_dir, logfile = file.path(mem_fun_dir, logfile), evict = evict, ...
   )
 
   return(memoise::memoise(func, omit_args = omit_args, cache = cache))
